@@ -1,0 +1,47 @@
+package com.shijith.sms.auth;
+
+import com.shijith.sms.bean.Account;
+import com.shijith.sms.bean.AuthenticatedUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.GenericFilterBean;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@Component
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class AuthenticationFilter extends GenericFilterBean {
+
+    private final String AUTH_HEADER = "Authorization";
+
+/*    @Autowired(required = false)
+    private AuthenticatedUser authenticatedUser;*/
+
+    @Autowired
+    private IAuthValidator authValidator;
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+        String authString = httpRequest.getHeader(AUTH_HEADER);
+
+        try {
+            Account account = authValidator.validate(authString);
+            AuthenticatedUser authenticatedUser = AuthenticatedUser.getAuthenticatedUser();
+            authenticatedUser.setUserId(account.getId());
+            filterChain.doFilter(servletRequest, servletResponse);
+        } catch (Exception e) {
+            ((HttpServletResponse) servletResponse).setStatus(HttpServletResponse.SC_FORBIDDEN);
+            AuthenticatedUser.remove();
+        }
+    }
+
+}
