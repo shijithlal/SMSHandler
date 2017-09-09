@@ -1,6 +1,5 @@
 package com.shijith.sms;
 
-import javax.naming.InitialContext;
 import java.util.ArrayList;
 import java.util.List;
 

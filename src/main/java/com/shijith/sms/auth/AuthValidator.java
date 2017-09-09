@@ -1,11 +1,9 @@
 package com.shijith.sms.auth;
 
 import com.shijith.sms.bean.Account;
-import com.shijith.sms.bean.AuthenticatedUser;
 import com.shijith.sms.db.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.HashMap;
 import java.util.List;

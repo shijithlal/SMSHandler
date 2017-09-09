@@ -2,13 +2,10 @@ package com.shijith.sms.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
-import static com.shijith.sms.Constants.COUNTER_EXPIRE_TIME;
-import static com.shijith.sms.Constants.COUNTER_SUFFIX;
-import static com.shijith.sms.Constants.KEY_EXPIRE_TIME;
+import static com.shijith.sms.Constants.*;
 
 @Service
 public class JedisService implements ICacheService {

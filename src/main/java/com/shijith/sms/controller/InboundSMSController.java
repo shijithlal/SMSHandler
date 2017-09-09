@@ -1,9 +1,8 @@
 package com.shijith.sms.controller;
 
-import com.shijith.sms.bl.IProcessor;
-import com.shijith.sms.bl.Processor;
 import com.shijith.sms.bean.SMSRequest;
 import com.shijith.sms.bean.SMSResponse;
+import com.shijith.sms.bl.IProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
