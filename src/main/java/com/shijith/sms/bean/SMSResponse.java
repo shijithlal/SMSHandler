@@ -1,10 +1,10 @@
 package com.shijith.sms.bean;
 
-public class SMSHandlerResponse {
+public class SMSResponse {
     private final String message;
     private final String error;
 
-    public SMSHandlerResponse(String message, String error) {
+    public SMSResponse(String message, String error) {
         this.message = message;
         this.error = error;
     }

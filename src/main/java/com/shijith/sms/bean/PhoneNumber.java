@@ -1,16 +1,26 @@
 package com.shijith.sms.bean;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity(name = "phone_number")
 public class PhoneNumber {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String number;
-    private String account_id;
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public Integer getId() {
         return id;
@@ -27,14 +37,4 @@ public class PhoneNumber {
     public void setNumber(String number) {
         this.number = number;
     }
-
-    public String getAccount_id() {
-        return account_id;
-    }
-
-    public void setAccount_id(String account_id) {
-        this.account_id = account_id;
-    }
-
-
 }

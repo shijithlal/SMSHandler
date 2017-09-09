@@ -11,12 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.shijith.sms.Constants.*;
+
 @Service
 public class AuthValidator implements IAuthValidator {
-    private static final String SEPERATOR = ",";
-    private static final String EQUALS = "=";
-    private static final String USER_NAME = "UserName";
-    private static final String PASSWORD = "Password";
 
 
     @Autowired

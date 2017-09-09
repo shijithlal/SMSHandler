@@ -16,14 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.shijith.sms.Constants.AUTH_HEADER;
+
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class AuthenticationFilter extends GenericFilterBean {
 
-    private final String AUTH_HEADER = "Authorization";
 
-/*    @Autowired(required = false)
-    private AuthenticatedUser authenticatedUser;*/
 
     @Autowired
     private IAuthValidator authValidator;
