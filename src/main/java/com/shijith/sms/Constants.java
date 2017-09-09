@@ -9,7 +9,7 @@ public class Constants {
     public static final String FROM_NOTFOUND = "from parameter not found";
     public static final String UNKNOWN_ERROR = "unknown failure";
     public static final String INBOUND_END_POINT = "inbound";
-    public static final String OUTBOUND_END_POINT = "inbound";
+    public static final String OUTBOUND_END_POINT = "outbound";
     public static final String SPACE = " ";
     public static final String OK_MESSAGE = "sms ok";
 
