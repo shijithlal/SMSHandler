@@ -2,7 +2,7 @@
 ## How to setup
 ### Requirements
 Java<br> 
-Maven<br> (Only for build)
+Maven(Only for build)<br> 
 redis<br>
 mysql<br>
 web and application container
@@ -11,6 +11,9 @@ web and application container
 2. Import sqldump.sql file to mysql server
 3. Update application.properties file with mysql host, database, user name and password
 4. Build and Deploy the application in application server. 
+### Build
+mvn clean build
+To Skip tests use, mvn clean install -Dmaven.test.skip=true  
 ## Sample request
 ### Inbound
 curl -H "Content-Type: application/json" -H "Authorization: UserName=plivo1,Password=20S0KPNOIM" -X POST -d '{"from":"441224980093","to":"4924195509198","text":"hello"}' http://localhost:8080/inbound/sms/
