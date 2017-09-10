@@ -9,13 +9,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for /outbound/sms/
+ */
 @RestController
+@RequestMapping("/outbound/sms/")
 public class OutboundSMSController {
 
     @Autowired
-    IProcessor processor;
+    private IProcessor processor;
 
-    @RequestMapping(value = "/outbound/sms/", method = RequestMethod.POST)
+    /**
+     * Default constructor
+     */
+    public OutboundSMSController() {
+
+    }
+
+    /**
+     * Constructor for unit test case.
+     * @param processor
+     */
+    protected OutboundSMSController(IProcessor processor) {
+        this.processor = processor;
+    }
+
+    /**
+     * /outbound/sms/ Post Method
+     * @param request
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST)
     public SMSResponse post(@RequestBody SMSRequest request) {
         return processor.processOutboundRequest(request);
     }

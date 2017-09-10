@@ -6,13 +6,36 @@ import com.shijith.sms.bl.IProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller for /inbound/sms/
+ */
 @RestController
 @RequestMapping("/inbound/sms/")
 public class InboundSMSController {
 
     @Autowired
-    IProcessor processor;
+    private IProcessor processor;
 
+    /**
+     * Default constructor
+     */
+    public InboundSMSController() {
+
+    }
+
+    /**
+     * Constructor for Unit test case.
+     * @param processor
+     */
+    protected InboundSMSController(IProcessor processor) {
+        this.processor = processor;
+    }
+
+    /**
+     * /inbound/sms/ Post method
+     * @param request
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public SMSResponse post(@RequestBody SMSRequest request) {

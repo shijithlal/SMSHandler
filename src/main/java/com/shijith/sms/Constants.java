@@ -38,4 +38,24 @@ public class Constants {
         add("STOP\n");
     }};
 
+    public static String FROM_MISSING = "from is missing";
+    public static String FROM_INVALID = "from is invalid";
+
+    public static String TO_MISSING = "to is missing";
+    public static String TO_INVALID = "to is invalid";
+
+    public static String TEXT_MISSING = "text is missing";
+    public static String TEXT_INVALID = "text is invalid";
+
+
+    public static Integer MIN_FROM_LENGTH = 6;
+    public static Integer MAX_FROM_LENGTH = 16;
+
+    public static Integer MIN_TO_LENGTH = 6;
+    public static Integer MAX_TO_LENGTH = 16;
+
+    public static Integer MIN_TEXT_LENGTH = 1;
+    public static Integer MAX_TEXT_LENGTH = 120;
+
+
 }

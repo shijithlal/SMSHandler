@@ -3,26 +3,9 @@ package com.shijith.sms.bean;
 
 import com.shijith.sms.bl.ValidationException;
 
+import static com.shijith.sms.Constants.*;
+
 public class SMSRequest {
-
-    private static String FROM_MISSING = "from is missing";
-    private static String FROM_INVALID = "from is invalid";
-
-    private static String TO_MISSING = "to is missing";
-    private static String TO_INVALID = "to is invalid";
-
-    private static String TEXT_MISSING = "text is missing";
-    private static String TEXT_INVALID = "text is invalid";
-
-
-    private static Integer MIN_FROM_LENGTH = 6;
-    private static Integer MAX_FROM_LENGTH = 16;
-
-    private static Integer MIN_TO_LENGTH = 6;
-    private static Integer MAX_TO_LENGTH = 16;
-
-    private static Integer MIN_TEXT_LENGTH = 1;
-    private static Integer MAX_TEXT_LENGTH = 120;
 
 
     public void setFrom(String from) {
@@ -57,11 +40,15 @@ public class SMSRequest {
         return text;
     }
 
+    /**
+     * Validate input request.
+     * @throws ValidationException
+     */
     public void validate() throws ValidationException {
 
-        if(from == null || from.isEmpty()) new ValidationException(FROM_MISSING);
-        if(to == null || to.isEmpty()) new ValidationException(TO_MISSING);
-        if(text == null || text.isEmpty()) new ValidationException(TEXT_MISSING);
+        if(from == null || from.isEmpty()) throw new ValidationException(FROM_MISSING);
+        if(to == null || to.isEmpty()) throw new ValidationException(TO_MISSING);
+        if(text == null || text.isEmpty()) throw new ValidationException(TEXT_MISSING);
 
         if(from.length() < MIN_FROM_LENGTH || from.length() > MAX_FROM_LENGTH)
             throw new ValidationException(FROM_INVALID);

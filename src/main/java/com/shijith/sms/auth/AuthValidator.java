@@ -18,6 +18,30 @@ public class AuthValidator implements IAuthValidator {
     @Autowired
     private AccountRepository accountRepository;
 
+    /**
+     * Deffaut constructor
+     */
+    public AuthValidator() {
+
+    }
+
+    /**
+     * Constructor for Unit test cases
+     * @param accountRepository
+     */
+    protected AuthValidator(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+
+    }
+
+
+    /**
+     * Validate authentication string in the request and return a Account object if authentication is success.
+     * Throw AuthException if the credential does not match.
+     * @param authString
+     * @return
+     * @throws AuthException
+     */
     @Override
     public Account validate(String authString) throws AuthException {
         Map<String,String> authCredentials = getCredetials(authString);
@@ -40,6 +64,11 @@ public class AuthValidator implements IAuthValidator {
 
     }
 
+    /**
+     * Create a map from auth string.
+     * @param authString
+     * @return
+     */
     private Map<String,String> getCredetials(String authString) {
         Map<String, String> retMap = new HashMap<>();
         String [] credentials = authString.split(SEPERATOR);

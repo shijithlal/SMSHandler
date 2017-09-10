@@ -1,8 +1,12 @@
 package com.shijith.sms.bean;
 
 public class SMSResponse {
-    private final String message;
-    private final String error;
+    private String message;
+    private String error;
+
+    public SMSResponse() {
+
+    }
 
     public SMSResponse(String message, String error) {
         this.message = message;
@@ -16,4 +20,13 @@ public class SMSResponse {
     public String getMessage() {
         return message;
     }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+
 }

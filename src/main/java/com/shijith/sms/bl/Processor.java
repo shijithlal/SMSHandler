@@ -23,6 +23,28 @@ public class Processor implements IProcessor{
     @Autowired
     ICacheService cacheService;
 
+    /**
+     * Default constructor
+     */
+    public Processor() {
+
+    }
+
+    /**
+     * Constructor for unit testing
+     * @param phoneNumberRepository
+     * @param cacheService
+     */
+    protected Processor(PhoneNumberRepository phoneNumberRepository, ICacheService cacheService) {
+        this.phoneNumberRepository = phoneNumberRepository;
+        this.cacheService = cacheService;
+    }
+
+    /**
+     * Process the inbound end point request
+     * @param request
+     * @return
+     */
     public SMSResponse processInboundRequest(SMSRequest request) {
         SMSResponse response;
         try {
@@ -50,6 +72,13 @@ public class Processor implements IProcessor{
         return response;
 
     }
+
+    /**
+     * Process the outbound end point request
+     * @param request
+     * @return
+     */
+
     public SMSResponse processOutboundRequest(SMSRequest request) {
 
         SMSResponse response;
